@@ -1,0 +1,1 @@
+export default function manifest(){return {name:'AbhiAI',short_name:'AbhiAI',start_url:'/',display:'standalone',background_color:'#0b0d15',theme_color:'#0b0d15',icons:[{src:'/icon.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]}}
