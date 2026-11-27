@@ -3,8 +3,8 @@ import {useState} from 'react';
 const ids=['openrouter','gemini','nvidia','groq','cerebras','openai'];
 export default function Admin(){
 const [token,setToken]=useState(''),[data,setData]=useState(null),[rows,setRows]=useState(null),[error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false),[provider,setProvider]=useState(ids[0]),[model,setModel]=useState(''),[key,setKey]=useState(''),[enabled,setEnabled]=useState(false);
-async function api(path,method='GET',body){const r=await fetch('/api/admin/'+path,{method,headers:{'Content-Type':'application/json'},cache:'no-store',...(body?{body:JSON.stringify(body)}:{})});if(!r.ok)throw Error(r.status===401?'Access denied':'Operation unavailable');return r.json()}
-async function unlock(){const r=await fetch('/api/admin/session',{method:'POST',headers:{Authorization:'Bearer '+token},cache:'no-store'});setToken('');if(!r.ok)throw Error('Access denied');await refresh()}
+async function api(path,method='GET',body){const r=await fetch('/api/admin/'+path,{method,headers:{'Content-Type':'application/json'},cache:'no-store',...(body?{body:JSON.stringify(body)}:{})});if(r.status===401){setData(null);setRows(null);setKey('');throw Error('Session expired or access denied. Unlock again.')}if(!r.ok)throw Error('Operation unavailable');return r.json()}
+async function unlock(){const r=await fetch('/api/admin/session',{method:'POST',headers:{Authorization:'Bearer '+token},cache:'no-store'});setToken('');if(!r.ok)throw Error(r.status===429?'Too many attempts. Try again in a minute.':'Access denied');await refresh()}
 async function refresh(){setData(await api('providers'));try{setRows((await api('settings')).providers)}catch{setRows(null)}}
 async function action(fn){setBusy(true);setError('');setNotice('');try{await fn()}catch(e){setError(e.message)}finally{setBusy(false)}}
 function select(id){setProvider(id);const row=rows?.find(x=>x.provider===id);setModel(row?.model||'');setEnabled(row?.enabled||false);setKey('')}
