@@ -1,0 +1,12 @@
+begin;
+create table public.conversations (id uuid primary key default gen_random_uuid(), user_id uuid not null references auth.users(id) on delete cascade, title text not null default 'New chat' check (char_length(title)<=200), created_at timestamptz not null default now(), unique(id,user_id));
+create table public.messages (id uuid primary key default gen_random_uuid(), conversation_id uuid not null, user_id uuid not null, role text not null check(role in ('user','assistant')), content text not null check(char_length(content)<=200000), created_at timestamptz not null default now(), foreign key(conversation_id,user_id) references public.conversations(id,user_id) on delete cascade);
+create index conversations_owner_idx on public.conversations(user_id,created_at);
+create index messages_conversation_idx on public.messages(conversation_id,user_id,created_at);
+alter table public.conversations enable row level security;
+alter table public.messages enable row level security;
+revoke all on public.conversations,public.messages from public,anon,authenticated;
+grant select,insert,update,delete on public.conversations,public.messages to authenticated;
+create policy owner_access on public.conversations for all to authenticated using ((select auth.uid())=user_id and (select auth.jwt()->>'is_anonymous') is distinct from 'true') with check ((select auth.uid())=user_id and (select auth.jwt()->>'is_anonymous') is distinct from 'true');
+create policy owner_access on public.messages for all to authenticated using ((select auth.uid())=user_id and (select auth.jwt()->>'is_anonymous') is distinct from 'true') with check ((select auth.uid())=user_id and (select auth.jwt()->>'is_anonymous') is distinct from 'true');
+commit;
