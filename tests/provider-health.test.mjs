@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {record,available,health} from '../lib/provider-health.mjs';
+test('three failures open cooldown and success resets it',()=>{for(let i=0;i<3;i++)record('test',false,100,1000);assert.equal(available('test',1001),false);assert.equal(available('test',61000),true);record('test',true,50,61001);assert.equal(health('test').consecutive,0);assert.equal(health('test').failure,3);assert.equal(health('test').success,1)});
