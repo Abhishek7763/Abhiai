@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {validateImage,visionEligible,providerMessages} from '../lib/attachments.mjs';
+test('reject unsupported and mismatched image types',()=>{assert.throws(()=>validateImage({mime:'image/svg+xml',data:'AAAA'}));assert.throws(()=>validateImage({mime:'image/png',data:'AAAA'}))});
+test('vision requires exact model opt-in',()=>{const p={id:'gemini',model:'test'};assert.equal(visionEligible(p,{}),false);assert.equal(visionEligible(p,{GEMINI_VISION_MODEL:'test'}),true)});
+test('native and compatible image formats',()=>{const m=[{role:'user',content:'describe',image:{mime:'image/png',data:'AAAA'}}];assert.equal(providerMessages(m,true)[0].parts[1].inlineData.data,'AAAA');assert.equal(providerMessages(m,false)[0].content[1].image_url.url,'data:image/png;base64,AAAA')});
