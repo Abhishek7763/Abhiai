@@ -14,3 +14,38 @@
 
 /* Mobile usability and accessibility */
 .workspace .brand-lockup img{object-fit:contain;flex-shrink:0}.workspace .thread{min-width:0}.workspace textarea{font-size:16px}.workspace button{touch-action:manipulation}.workspace a:focus-visible,.workspace summary:focus-visible,.workspace input:focus-visible{outline:2px solid #60a5fa;outline-offset:3px}.workspace .attachment-tools{overflow-wrap:anywhere}.workspace main{padding-bottom:max(16px,env(safe-area-inset-bottom))}.workspace .sidebar{overscroll-behavior:contain}.workspace .code-panel{max-width:100%}@media(max-width:640px){.workspace header button,.workspace .actions button{min-width:44px;min-height:44px}.workspace .sidebar.visible{top:0;max-height:100dvh}.workspace .message{max-width:100%}}
+
+/* Refined chat workspace */
+.workspace{--surface:#121318;--edge:#ffffff16;--muted:#a1a1aa;--accent:#2878ff;background:radial-gradient(ellipse at 50% 0%,#14203a 0%,#09090b 48%);color:#f4f4f5}
+.workspace.light{--surface:#fff;--edge:#17255420;--muted:#64748b;--accent:#146bff;background:radial-gradient(ellipse at 50% 0%,#e8f0ff,#fafafa 55%);color:#18181b}
+.workspace main{max-width:1000px;gap:16px;padding:16px 28px 20px}
+.workspace header{border-bottom:1px solid var(--edge);background:transparent}
+.workspace header>button{background:transparent;border-color:var(--edge);border-radius:12px}
+.workspace .sidebar{background:var(--surface);border-color:var(--edge);padding:20px 14px;gap:12px;width:260px}
+.workspace .sidebar>a{padding:10px 12px;border-radius:10px;color:inherit}
+.workspace .sidebar>a:hover,.workspace .sidebar button:hover:not(:disabled){background:#2878ff18}
+.workspace .sidebar>p{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.workspace .sidebar button{border-color:var(--edge);background:transparent;border-radius:10px}
+.workspace .hero{padding:48px 0;gap:10px}
+.workspace .brand-hero{font-size:clamp(34px,5vw,48px);gap:8px}
+.workspace .hero h1{font-size:clamp(24px,4vw,36px);font-weight:650;margin:12px 0 0}
+.workspace .hero p{color:var(--muted);margin:0 0 12px}
+.workspace .suggestions{max-width:560px;gap:10px}
+.workspace .suggestions button{background:var(--surface);border-color:var(--edge);padding:18px;min-height:64px;transition:transform .18s,border-color .18s}
+.workspace .suggestions button:hover:not(:disabled){border-color:var(--accent);transform:translateY(-2px)}
+.workspace form{background:var(--surface);border:1px solid var(--edge);box-shadow:0 12px 48px #0002;position:sticky;bottom:8px;z-index:1;max-width:760px}
+.workspace form:focus-within{border-color:#2878ff88}
+.workspace textarea{min-height:72px;max-height:35dvh;resize:vertical;line-height:1.55;outline:none}
+.workspace .actions button{border:0;border-radius:50%;width:44px;height:44px;padding:0;display:grid;place-items:center;background:var(--accent)}
+.workspace .actions button:disabled{background:#777;opacity:.4}
+.workspace .attachment-tools{color:var(--muted);gap:12px}
+.workspace .attachment-tools button{background:transparent;border-color:var(--edge);padding:6px 10px}
+.workspace .thread{width:100%;max-width:760px;align-self:center;gap:22px}
+.workspace .message{line-height:1.65}
+.workspace .message.user{background:#2878ff18;border-color:#2878ff24;border-radius:20px 20px 5px 20px}
+.workspace .message.assistant{padding-left:0;padding-right:0;width:100%}
+.workspace .message>button{font-size:12px;background:transparent;border-color:var(--edge);padding:5px 10px;margin:4px 6px 0 0;border-radius:8px}
+.workspace details{border:1px solid var(--edge);border-radius:12px;padding:10px 12px;color:var(--muted)}
+.workspace footer{color:var(--muted);font-size:11px}
+@media(max-width:640px){.workspace main{padding:10px 14px;gap:12px}.workspace .hero{padding:28px 0;justify-content:center}.workspace .hero .suggestions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.workspace .suggestions button{padding:12px;min-height:54px;font-size:12px}.workspace form{bottom:max(4px,env(safe-area-inset-bottom));padding:12px}.workspace .sidebar.visible{box-shadow:0 0 0 100vmax #0007;z-index:3}.workspace .attachment-tools{gap:8px}.workspace .thread{gap:14px}}
+@media(prefers-reduced-motion:reduce){.workspace .suggestions button{transition:none;transform:none}}
