@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {candidates,validateMessages,chat} from '../lib/gateway.mjs';
+test('rejects paid and unverified models',()=>assert.equal(candidates({GROQ_API_KEY:'x',GROQ_MODEL:'free',OPENROUTER_API_KEY:'x',OPENROUTER_MODEL:'paid'}).length,0));
+test('rejects system role and oversized content',()=>{assert.throws(()=>validateMessages([{role:'system',content:'x'}]));assert.throws(()=>validateMessages([{role:'user',content:'x'.repeat(12001)}]));});
+test('mock free provider',async()=>{const result=await chat([{role:'user',content:'hello'}],{env:{OPENROUTER_API_KEY:'test',OPENROUTER_MODEL:'example:free'},request:async(url,opts)=>{assert.equal(url,'https://openrouter.ai/api/v1/chat/completions');assert.equal(opts.redirect,'error');return {ok:true,json:async()=>({choices:[{message:{content:'hello'}}]})}}});assert.equal(result,'hello')});
