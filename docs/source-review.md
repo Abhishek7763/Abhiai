@@ -1,0 +1,3 @@
+# Source review
+
+Original AbhiAI archive includes provider adapter interfaces, OpenAI-compatible and Google adapters, free guard, failover classification, security modules and tests. The original free guard accepts generic free-looking model names and limited credit tiers; do not port this policy unchanged. Start with explicit OpenRouter :free models and server-side fixed endpoints. Other providers remain disabled until account billing and quotas are verified. Public endpoint must remain disabled until distributed abuse controls are implemented. Existing UI is a preview, not a tested release. Original asset restoration and native Gemini integration remain pending.
