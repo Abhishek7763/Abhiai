@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {adminAuthorized} from '../lib/admin-auth.mjs';
+const secret='a'.repeat(48),preview='b'.repeat(48),env={AI_ADMIN_TOKEN:secret,AI_PREVIEW_TOKEN:preview};const req=t=>new Request('https://example.com',{headers:{authorization:'Bearer '+t}});
+test('only separate admin secret accepted',()=>{assert.equal(adminAuthorized(req(secret),env),true);assert.equal(adminAuthorized(req(preview),env),false);assert.equal(adminAuthorized(req('wrong'),env),false)});
+test('missing weak or shared secrets fail closed',()=>{assert.equal(adminAuthorized(req(secret),{}),false);assert.equal(adminAuthorized(req('short'),{AI_ADMIN_TOKEN:'short'}),false);assert.equal(adminAuthorized(req(secret),{AI_ADMIN_TOKEN:secret,AI_PREVIEW_TOKEN:secret}),false)});
