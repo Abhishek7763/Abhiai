@@ -1,15 +1,27 @@
-<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="#222533" stroke-width="0.75" stroke-opacity="0.6"/></pattern>
-<radialGradient id="ambient-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/><stop offset="60%" stop-color="#94a3b8" stop-opacity="0.06"/><stop offset="100%" stop-color="#000000" stop-opacity="0"/></radialGradient>
-<linearGradient id="ribbon-main" x1="30" y1="170" x2="170" y2="30" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#CBD5E1"/><stop offset="15%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#94A3B8"/><stop offset="55%" stop-color="#E2E8F0"/><stop offset="70%" stop-color="#64748B"/><stop offset="88%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#E2E8F0"/></linearGradient>
-<linearGradient id="ribbon-front" x1="70" y1="50" x2="140" y2="130" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="30%" stop-color="#F8FAFC"/><stop offset="60%" stop-color="#CBD5E1"/><stop offset="100%" stop-color="#475569"/></linearGradient>
-<linearGradient id="ribbon-under" x1="130" y1="60" x2="60" y2="140" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#334155"/><stop offset="40%" stop-color="#64748B"/><stop offset="75%" stop-color="#CBD5E1"/><stop offset="100%" stop-color="#1E293B"/></linearGradient>
-<filter id="shadow" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="-2" dy="4" stdDeviation="3.5" flood-color="#090d16" flood-opacity="0.65"/></filter></defs>
-<rect width="200" height="200" rx="32" fill="#0d0e15"/><rect width="200" height="200" rx="32" fill="url(#grid)"/><circle cx="100" cy="100" r="75" fill="url(#ambient-glow)"/>
-<path d="M 98 94 C 112 76, 134 52, 154 58 C 174 64, 180 88, 162 110 C 144 132, 118 152, 98 120 C 80 92, 58 82, 42 90 C 24 100, 22 126, 40 144 C 58 162, 86 160, 102 130 C 106 122, 104 112, 98 94 Z" fill="none" stroke="url(#ribbon-under)" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 98 94 C 112 76, 134 52, 154 58 C 174 64, 180 88, 162 110 C 144 132, 118 152, 98 120 C 80 92, 58 82, 42 90 C 24 100, 22 126, 40 144 C 58 162, 86 160, 102 130 C 106 122, 104 112, 98 94 Z" fill="none" stroke="url(#ribbon-main)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M 82 72 C 96 82, 118 88, 136 78 C 154 68, 162 58, 150 58 C 132 54, 112 74, 98 92 C 92 102, 90 114, 94 126" fill="none" stroke="url(#ribbon-front)" stroke-width="18" stroke-linecap="round" filter="url(#shadow)"/>
-<path d="M 124 64 C 142 54, 162 58, 166 76 C 168 90, 156 110, 142 124" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.9"/>
-<path d="M 38 96 C 28 106, 26 126, 42 142 C 56 156, 80 154, 94 130" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-opacity="0.9"/>
-<path d="M 94 86 C 98 94, 104 102, 110 110" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.95"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="55 65 400 400" role="img" aria-label="AbhiAI brand mark">
+  <defs>
+    <linearGradient id="main" x1="120" y1="80" x2="390" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12A2FF"/>
+      <stop offset=".52" stop-color="#146BFF"/>
+      <stop offset="1" stop-color="#073BC9"/>
+    </linearGradient>
+    <linearGradient id="left" x1="115" y1="115" x2="230" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A2D91"/>
+      <stop offset=".52" stop-color="#0B55E8"/>
+      <stop offset="1" stop-color="#08249A"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="105" y1="350" x2="325" y2="285" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A2D9C"/>
+      <stop offset=".5" stop-color="#0A55F0"/>
+      <stop offset="1" stop-color="#0C2F92"/>
+    </linearGradient>
+    <linearGradient id="star" x1="338" y1="93" x2="430" y2="185" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8A5CFF"/>
+      <stop offset="1" stop-color="#5A22DF"/>
+    </linearGradient>
+  </defs>
+  <path d="M242 101c-23 0-41 14-52 36L82 348c-14 29 5 62 38 62 14 0 27-5 39-15l82-68-39-52-61 46 98-192c7-14 8-23 3-28z" fill="url(#left)"/>
+  <path d="M242 101c23 0 41 14 53 37l123 241c11 22-5 44-29 44-23 0-38-12-48-31L221 158c-10-20-2-45 21-57z" fill="url(#main)"/>
+  <path d="M112 365c44-34 79-63 117-76 36-13 74-8 111 18l-27 48c-27-18-49-22-72-14-35 11-64 38-92 58-22 16-52 6-61-16-5-13 3-12 24-18z" fill="url(#bar)"/>
+  <path d="M384 93c8 28 18 38 46 46-28 8-38 18-46 46-8-28-18-38-46-46 28-8 38-18 46-46z" fill="url(#star)"/>
+</svg>
